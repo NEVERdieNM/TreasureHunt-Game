@@ -5,9 +5,17 @@ import java.awt.event.KeyListener;
 
 public class KeyHandler implements KeyListener {
 
+    GamePanel gp;
+    
     public boolean wPressed, sPressed, aPressed, dPressed, spacePressed;
     //DEBUG
     public boolean showCoordinates, showDrawTime;
+
+
+    public KeyHandler(GamePanel gp){
+        this.gp = gp;
+    }
+
 
     @Override
     public void keyPressed(KeyEvent e) {
@@ -29,6 +37,16 @@ public class KeyHandler implements KeyListener {
         if(keyCode == KeyEvent.VK_SPACE){
             spacePressed = true;
         }
+        if(keyCode == KeyEvent.VK_ESCAPE){
+            if(gp.gameState == gp.PLAY_STATE){
+                gp.gameState = gp.PAUSE_STATE;
+            }
+            else if(gp.gameState == gp.PAUSE_STATE){
+                gp.gameState = gp.PLAY_STATE;
+            }
+        }
+
+
         if(keyCode == KeyEvent.VK_K){
             if(showCoordinates == false){
                 showCoordinates = true;
