@@ -9,7 +9,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import main.GamePanel;
-import main.UtilityTool;
+import main.UtilTool;
 
 public class SuperObject {
     
@@ -39,7 +39,7 @@ public class SuperObject {
 
     public void setup(String imageName){
 
-        UtilityTool uTool = new UtilityTool();
+        UtilTool uTool = new UtilTool();
         BufferedImage scaledImage = null;
 
         try{

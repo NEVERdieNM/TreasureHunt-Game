@@ -13,7 +13,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 import main.GamePanel;
-import main.UtilityTool;
+import main.UtilTool;
 
 public class TileManager {
     
@@ -85,7 +85,7 @@ public class TileManager {
 
     public void setup(int index, String imageName, boolean collsion){
         
-        UtilityTool uTool = new UtilityTool();
+        UtilTool uTool = new UtilTool();
 
         try {
             BufferedImage scaledImage = uTool.scaleImage(ImageIO.read(new File("res/tiles/" + imageName + ".png")), gp.TILE_SIZE, gp.TILE_SIZE);

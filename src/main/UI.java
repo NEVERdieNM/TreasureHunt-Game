@@ -7,12 +7,14 @@ import java.awt.image.BufferedImage;
 import java.text.DecimalFormat;
 
 import objects.ObjectKey;
+import objects.ObjectAxe;
 
 public class UI{
 
     GamePanel gp;
     Font arial40;
     BufferedImage keyImage;
+    BufferedImage axeImage;
 
     public boolean messageOn;
     public String message = "";
@@ -25,10 +27,16 @@ public class UI{
 
     public UI(GamePanel gp){
 
+        //KEYS
         this.gp = gp;
         arial40 = new Font("Arial", Font.BOLD, 40);
         ObjectKey key = new ObjectKey(gp);
         keyImage = key.image;
+
+        //AXES
+        this.gp = gp;
+        ObjectAxe axe = new ObjectAxe(gp);
+        axeImage = axe.image;
     }
 
     public void showMessage(String text){
@@ -69,6 +77,11 @@ public class UI{
             //KEYCOUNTER UI
             for(int i = 0; i < gp.player.keyCount; i++){
                 g2.drawImage(keyImage, gp.TILE_SIZE * i + gp.TILE_SIZE/2, gp.TILE_SIZE/2, (gp.TILE_SIZE/3)*5, (gp.TILE_SIZE/3)*5, null);
+            }
+
+             //AXECOUNTER UI
+             for(int i = 0; i < gp.player.axeCount; i++){
+                g2.drawImage(axeImage, gp.TILE_SIZE * i + gp.TILE_SIZE/2, (gp.SCREEN_HEIGHT - gp.TILE_SIZE*2), (gp.TILE_SIZE/3)*5, (gp.TILE_SIZE/3)*5, null);
             }
         
             //PLAYTIME

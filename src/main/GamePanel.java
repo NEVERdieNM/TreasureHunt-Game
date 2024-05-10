@@ -46,17 +46,12 @@ public class GamePanel extends JPanel implements Runnable {
     public Player player;
     public SuperObject[] obj = new SuperObject[10];
 
-    //GAME STATE
-    public int gameState;
-    public final int PLAY_STATE = 1;
-    public final int PAUSE_STATE = 0;
-
     public GamePanel(){
 
         this.setPreferredSize(new Dimension(SCREEN_WIDTH,SCREEN_HEIGHT));
         this.setBackground(Color.black);
         this.setDoubleBuffered(true);
-        keyH = new KeyHandler(this);
+        keyH = new KeyHandler();
         player = new Player(this, keyH);
         this.addKeyListener(keyH);
         this.setFocusable(true);
@@ -67,7 +62,6 @@ public class GamePanel extends JPanel implements Runnable {
 
         assetS.setObject();
         playMusic(0);
-        gameState = PLAY_STATE;
 
     }
 
@@ -80,13 +74,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void update(){
 
-        if(gameState == PLAY_STATE){
-            player.update();
-        }
-        else if(gameState == PAUSE_STATE){
-
-        }
-        
+        player.update();
 
     }
 

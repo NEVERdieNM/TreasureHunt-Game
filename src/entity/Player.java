@@ -10,7 +10,7 @@ import javax.imageio.ImageIO;
 
 import main.GamePanel;
 import main.KeyHandler;
-import main.UtilityTool;
+import main.UtilTool;
 
 public class Player extends Entity {
 
@@ -20,6 +20,7 @@ public class Player extends Entity {
     public final int SCREEN_X, SCREEN_Y;
 
     public int keyCount = 0;
+    public int axeCount = 0;
 
     public Player(GamePanel gp, KeyHandler keyH){
         this.gp = gp;
@@ -60,7 +61,7 @@ public class Player extends Entity {
 
     public BufferedImage setup(String imageName){
         
-        UtilityTool uTool = new UtilityTool();
+        UtilTool uTool = new UtilTool();
         BufferedImage scaledImage = null;
 
         try{
@@ -167,6 +168,22 @@ public class Player extends Entity {
                     gp.ui.gameFinished = true;
                     gp.stopMusic();
                     gp.playSoundEffect(4);
+                    break;
+                case "branches":
+                    if(axeCount > 0){
+                        gp.ui.showMessage("Nice");
+                        gp.playSoundEffect(3);
+                        gp.obj[index] = null;
+                        axeCount--;
+                    }else{
+                        gp.ui.showMessage("I need something to cut these branches with");
+                    }
+                    break;
+                    case "axe":
+                    gp.ui.showMessage("I found an axe!");
+                    gp.playSoundEffect(1);
+                    axeCount++;
+                    gp.obj[index] = null;
                     break;
             }
 
